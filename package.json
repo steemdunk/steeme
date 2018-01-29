@@ -1,0 +1,33 @@
+{
+  "name": "steeme",
+  "version": "0.0.1",
+  "description": "Steem library for blockchain interaction with strict types",
+  "main": "lib/index.js",
+  "author": "Samuel Grenier",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "tsc"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "bs58": "^4.0.1",
+    "bytebuffer": "^5.0.1",
+    "debug": "^2.6.9",
+    "http-status": "^1.0.1",
+    "secp256k1": "^3.4.0",
+    "superagent": "^3.8.2",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/bytebuffer": "^5.0.34",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/debug": "0.0.29",
+    "@types/node": "^8.5.2",
+    "@types/superagent": "^3.5.6",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  },
+  "optionalDependencies": {}
+}
