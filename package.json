@@ -2,14 +2,14 @@
   "name": "steeme",
   "version": "0.0.1",
   "description": "Steem library for blockchain interaction with strict types",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
   "author": "Samuel Grenier",
   "license": "MIT",
   "scripts": {
     "postinstall": "tsc"
   },
   "files": [
-    "lib"
+    "./lib"
   ],
   "dependencies": {
     "bs58": "^4.0.1",
