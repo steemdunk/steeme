@@ -2,13 +2,19 @@
   "name": "steeme",
   "version": "0.0.1",
   "description": "Steem library for blockchain interaction with strict types",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
   "author": "Samuel Grenier",
   "license": "MIT",
   "scripts": {
     "prepare": "npm run build",
-    "build": "node scripts/build.js"
+    "build": "gulp build"
   },
+  "files": [
+    "tsconfig.json",
+    "gulpfile.js",
+    "src",
+    "lib"
+  ],
   "dependencies": {
     "bs58": "^4.0.1",
     "bytebuffer": "^5.0.1",
