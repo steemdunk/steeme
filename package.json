@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "install": "npm run build",
-    "build": "gulp --cwd . build"
+    "build": "node ./scripts/build.js"
   },
   "files": [
     "./lib"
