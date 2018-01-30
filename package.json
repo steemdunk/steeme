@@ -6,7 +6,7 @@
   "author": "Samuel Grenier",
   "license": "MIT",
   "scripts": {
-    "postinstall": "build",
+    "install": "npm run build",
     "build": "gulp build"
   },
   "files": [
