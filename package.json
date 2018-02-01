@@ -15,6 +15,7 @@
     "src",
     "lib"
   ],
+  "types": "./lib/index.d.ts",
   "dependencies": {
     "bs58": "^4.0.1",
     "bytebuffer": "^5.0.1",
