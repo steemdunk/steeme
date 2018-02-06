@@ -37,3 +37,12 @@ export interface TransferOp extends Operation {
     memo: string;
   }
 }
+
+export interface DelegateVestingSharesOp extends Operation {
+  0: 'delegate_vesting_shares',
+  1: {
+    delegator: string;
+    delegatee: string;
+    vesting_shares: Asset|string;
+  }
+}

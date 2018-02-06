@@ -47,6 +47,8 @@ export class TypeSerializer {
     let amount: string;
     if (value.unit === AssetUnit.SBD || value.unit === AssetUnit.STEEM) {
       amount = value.amount.toFixed(3);
+    } else if (value.unit === AssetUnit.VESTS) {
+      amount = value.amount.toFixed(6);
     } else {
       throw new Error('Unhandled asset: ' + value.unit);
     }
