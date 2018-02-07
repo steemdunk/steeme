@@ -26,6 +26,8 @@ export class SteemUtil {
       unit = AssetUnit.SBD;
     } else if (split[1] === AssetUnit.STEEM) {
       unit = AssetUnit.STEEM;
+    } else if (split[1] === AssetUnit.VESTS) {
+      unit = AssetUnit.VESTS;
     } else {
       throw new Error('Invalid unit parsing asset: ' + str);
     }
