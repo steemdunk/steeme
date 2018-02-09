@@ -25,7 +25,7 @@ function sha256(val: Buffer|string): Buffer {
 
 export class PrivateKey {
 
-  private readonly role: KeyRole;
+  private readonly role!: KeyRole;
   private readonly key: Buffer;
 
   public static fromWif(wif: string) {
