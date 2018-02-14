@@ -46,3 +46,13 @@ export interface DelegateVestingSharesOp extends Operation {
     vesting_shares: Asset|string;
   }
 }
+
+export interface ClaimRewardBalanceOp extends Operation {
+  0: 'claim_reward_balance',
+  1: {
+    account: string,
+    reward_steem: Asset|string,
+    reward_sbd: Asset|string,
+    reward_vests: Asset|string
+  }
+}
