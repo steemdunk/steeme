@@ -5,7 +5,7 @@ import {Client} from '../client';
 import {Block} from './models';
 
 export type BlockNumHandler = (err: any, blockNum: number) => void;
-export type BlockHandler = (err: any, block: Block) => void;
+export type BlockHandler = (err: any, block: Block, blockNum: number) => void;
 export type TxHandler = (err: any, tx: SignedTransaction) => void;
 export type OpHandler = (err: any, op: Operation) => void;
 export type ReleaseFunc = () => void;
@@ -69,7 +69,7 @@ export class Blockchain {
     const handleBlock = async (num: number) => {
       try {
         const block = await this.client.db.getBlock(num);
-        handler(undefined, block);
+        handler(undefined, block, num);
       } catch (e) {
         if (e instanceof DisconnectedError) {
           // Replay failed blocks
@@ -77,14 +77,14 @@ export class Blockchain {
             handleBlock(num);
           }, 1000);
         } else {
-          handler(e, undefined as any);
+          handler(e, undefined!, undefined!);
         }
       }
     };
 
     return this.streamBlockNumbers((err, num) => {
       if (err) {
-        return handler(err, undefined as any);
+        return handler(err, undefined!, undefined!);
       }
       handleBlock(num);
     });
@@ -93,7 +93,7 @@ export class Blockchain {
   public streamTransactions(handler: TxHandler): ReleaseFunc {
     return this.streamBlocks((err, block) => {
       if (err) {
-        return handler(err, undefined as any);
+        return handler(err, undefined!);
       }
       block.transactions.forEach(tx => {
         handler(undefined, tx);
@@ -104,7 +104,7 @@ export class Blockchain {
   public streamOperations(handler: OpHandler): ReleaseFunc {
     return this.streamTransactions((err, tx) => {
       if (err) {
-        return handler(err, undefined as any);
+        return handler(err, undefined!);
       }
       tx.operations.forEach(op => {
         handler(undefined, op);
