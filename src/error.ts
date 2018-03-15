@@ -38,4 +38,12 @@ export class SteemRpcError extends Error {
     const msg = 'Can only vote once every 3 seconds';
     return this.rpcStack[0].format.includes(msg);
   }
+
+  voteWeightTooSmall(): boolean {
+    if (this.rpcCode !== SteemRpcErrorCode.ASSERT_EXCEPTION) {
+      return false;
+    }
+    const msg = 'Voting weight is too small';
+    return this.rpcStack[0].format.includes(msg);
+  }
 }
