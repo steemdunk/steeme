@@ -5,7 +5,6 @@ const gulp = require('gulp');
 const path = require('path');
 const del = require('del');
 
-const config = path.join(__dirname, 'tsconfig.json');
 const src = path.join(__dirname, 'src', '**', '*.ts');
 const outDir = path.join(__dirname, 'lib');
 
@@ -22,9 +21,11 @@ gulp.task('build', () => {
   return merge(js, dts);
 });
 
-gulp.task('watch', ['build'], () => {
-  return gulp.watch(src, ['build']);
+gulp.task('watch:start', () => {
+  return gulp.watch(src, gulp.series(['build']));
 });
+
+gulp.task('watch', gulp.series(['build', 'watch:start']));
 
 gulp.task('clean', () => {
   return del(`${outDir}/**`);
