@@ -53,7 +53,7 @@ export class Broadcast {
   async sendTransaction(key: PrivateKey, tx: Transaction) {
     const signedTx = key.signTransaction(tx, this.client.opts.chain_id);
     return this.client.send({
-      api: RpcApi.NETWORK_BROADCAST_API,
+      api: RpcApi.CONDENSER_API,
       method: 'broadcast_transaction_synchronous',
       params: [signedTx],
     });
