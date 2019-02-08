@@ -81,7 +81,7 @@ export class PrivateKey {
     let nonce = 0;
     do {
       const options = {
-        data: sha256(Buffer.concat([msg, new Buffer(nonce++)])),
+        data: sha256(Buffer.concat([msg, Buffer.from([nonce++])])),
       };
       sr = secp256k1.sign(msg, this.key, options);
     } while (!isCanonical(sr.signature));
@@ -97,7 +97,7 @@ export class PrivateKey {
   }
 
   public toWif(): string {
-    const privKey = Buffer.concat([new Buffer([0x80]), this.key]);
+    const privKey = Buffer.concat([Buffer.from([0x80]), this.key]);
     const checksum = sha256(sha256(privKey)).slice(0, 4);
     const privWif = Buffer.concat([privKey, checksum]);
     return bs58.encode(privWif);
