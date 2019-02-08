@@ -20,7 +20,7 @@ export class Database {
 
   public getDynamicGlobalProperties(): Promise<DynamicGlobalProperties> {
     return this.client.send({
-      api: RpcApi.DATABASE_API,
+      api: RpcApi.CONDENSER_API,
       method: 'get_dynamic_global_properties',
       params: [],
     });
@@ -38,7 +38,7 @@ export class Database {
 
   public getBlock(blockNum: number): Promise<Block> {
     return this.client.send({
-      api: RpcApi.DATABASE_API,
+      api: RpcApi.CONDENSER_API,
       method: 'get_block',
       params: [blockNum],
     });
@@ -46,7 +46,7 @@ export class Database {
 
   public getDiscussionsByBlog(query: DiscussionQuery): Promise<Discussion[]> {
     return this.client.send({
-      api: RpcApi.DATABASE_API,
+      api: RpcApi.CONDENSER_API,
       method: 'get_discussions_by_blog',
       params: [query],
     });
@@ -55,7 +55,7 @@ export class Database {
   public getContent(author: string,
                     permlink: string): Promise<Discussion|undefined> {
     return this.client.send({
-      api: RpcApi.DATABASE_API,
+      api: RpcApi.CONDENSER_API,
       method: 'get_content',
       params: [author, permlink]
     }).then(data => (data.author && data.permlink) ? data : undefined);
@@ -63,7 +63,7 @@ export class Database {
 
   public getAccounts(...accounts: string[]): Promise<Account[]> {
     return this.client.send({
-      api: RpcApi.DATABASE_API,
+      api: RpcApi.CONDENSER_API,
       method: 'get_accounts',
       params: [accounts]
     });

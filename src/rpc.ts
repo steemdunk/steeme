@@ -1,5 +1,5 @@
 export enum RpcApi {
-  DATABASE_API = 'database_api',
+  CONDENSER_API = 'condenser_api',
   NETWORK_BROADCAST_API = 'network_broadcast_api',
 }
 
